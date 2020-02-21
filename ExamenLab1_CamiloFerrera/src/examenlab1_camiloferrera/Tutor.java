@@ -48,6 +48,16 @@ public class Tutor extends Alumno {
     public String toString() {
         return "Tutor{" + "clases=" + clases + ", ganancias=" + ganancias + ", nivelense\u00f1anza=" + nivelenseñanza + ", tutorias=" + tutorias + '}';
     }
+
+    @Override
+    public void HacerExamen() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void DarTutorias() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

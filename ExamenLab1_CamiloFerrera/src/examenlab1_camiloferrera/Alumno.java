@@ -1,8 +1,8 @@
 package examenlab1_camiloferrera;
 
-public class Alumno {
-    private String nombre, carrera, lugarnacimiento, numerocuenta, usuario, contraseña;
-    private int edad;
+public abstract class Alumno {
+    protected String nombre, carrera, lugarnacimiento, numerocuenta, usuario, contraseña;
+    protected int edad;
 
     public Alumno(String nombre, String carrera, String lugarnacimiento, String numerocuenta, String usuario, String contraseña, int edad) {
         this.nombre = nombre;
@@ -59,6 +59,14 @@ public class Alumno {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
     
+    
+    public abstract void HacerExamen();
+    public abstract void DarTutorias();
     
 }

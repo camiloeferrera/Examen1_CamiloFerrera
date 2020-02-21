@@ -34,5 +34,22 @@ public class EstudianteNormal extends Alumno {
         this.examenes = examenes;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
+    
+
+    @Override
+    public void HacerExamen() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void DarTutorias() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
         
 }

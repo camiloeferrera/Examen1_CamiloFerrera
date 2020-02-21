@@ -8,6 +8,7 @@ package examenlab1_camiloferrera;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -67,6 +68,18 @@ public class Inicio extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         tf_iqcrearexamen = new javax.swing.JTextField();
         jLabel_CrearExamenFondo = new javax.swing.JLabel();
+        Menu = new javax.swing.JFrame();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tf_contraseña = new javax.swing.JPasswordField();
@@ -77,6 +90,7 @@ public class Inicio extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel_fondo = new javax.swing.JLabel();
 
+        Registro.setResizable(false);
         Registro.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 RegistroWindowClosing(evt);
@@ -140,6 +154,7 @@ public class Inicio extends javax.swing.JFrame {
         Registro.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
         Registro.getContentPane().add(jLabel_RegistroFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 570));
 
+        CrearExamen.setResizable(false);
         CrearExamen.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowDeactivated(java.awt.event.WindowEvent evt) {
                 CrearExamenWindowDeactivated(evt);
@@ -178,6 +193,59 @@ public class Inicio extends javax.swing.JFrame {
         CrearExamen.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 30));
         CrearExamen.getContentPane().add(tf_iqcrearexamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 50, 30));
         CrearExamen.getContentPane().add(jLabel_CrearExamenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 330));
+
+        Menu.setResizable(false);
+        Menu.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jTabbedPane1.addTab("ModificarDatos", jPanel1);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Edad", "Carrera", "Lugar Nac.", "Num. Cuenta", "Usuario", "Contraseña", "Conocimiento", "Nivel Aprend."
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabla);
+        if (tabla.getColumnModel().getColumnCount() > 0) {
+            tabla.getColumnModel().getColumn(0).setResizable(false);
+            tabla.getColumnModel().getColumn(1).setResizable(false);
+            tabla.getColumnModel().getColumn(2).setResizable(false);
+            tabla.getColumnModel().getColumn(3).setResizable(false);
+            tabla.getColumnModel().getColumn(4).setResizable(false);
+            tabla.getColumnModel().getColumn(5).setResizable(false);
+            tabla.getColumnModel().getColumn(6).setResizable(false);
+            tabla.getColumnModel().getColumn(7).setResizable(false);
+            tabla.getColumnModel().getColumn(8).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 810, -1));
+
+        jTabbedPane1.addTab("ListarDatos", jPanel2);
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jTabbedPane1.addTab("ExamenesPendientes", jPanel3);
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jTabbedPane1.addTab("ExamenesResueltos", jPanel4);
+        jTabbedPane1.addTab("ReservarTutoria", jPanel5);
+        jTabbedPane1.addTab("HacerExamen", jPanel6);
+        jTabbedPane1.addTab("DarTutoria", jPanel7);
+
+        Menu.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 540));
+        Menu.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 0, 810, 540));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -382,9 +450,24 @@ public class Inicio extends javax.swing.JFrame {
                 }
                 
                 if (valido == true) {
-                    
+                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                    for (int i = 0; i < alumnos.size(); i++) {
+                        if (alumnos.get(i) instanceof EstudianteNormal) {
+                            Object[] row = {alumnos.get(i),alumnos.get(i).getEdad(),alumnos.get(i).getCarrera(),alumnos.get(i).getLugarnacimiento(),
+                            alumnos.get(i).getNumerocuenta(),alumnos.get(i).getUsuario(),alumnos.get(i).getContraseña(),((EstudianteNormal)alumnos.get(i)).getConocimientoacumulado(),((EstudianteNormal)alumnos.get(i)).getNiveldeaprendizaje()};
+                            modelo.addRow(row);
+                        }
+                    }
+                    tabla.setModel(modelo);
+                    if (alumnos.get(this.flag) instanceof EstudianteNormal) {                    
+                        Menu.pack();
+                        Menu.setLocationRelativeTo(null);
+                        Menu.setVisible(true);
+                        jTabbedPane1.setEnabledAt(6, false);
+                        this.setVisible(false);
+                    }
                 } else {
-                    JOptionPane.showInputDialog(this,"Nombre de usuario y/o contraseña incorrecto/s");
+                    JOptionPane.showMessageDialog(this,"Nombre de usuario y/o contraseña incorrecto/s");
                     tf_nombreusuario.setText("");
                     tf_contraseña.setText("");
                 }
@@ -422,6 +505,7 @@ public class Inicio extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        alumnos.add(new EstudianteNormal (99,"Camilo","Sistemas","TGU","11841136","camiloeferrera","java123",19));
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Inicio().setVisible(true);
@@ -431,6 +515,7 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame CrearExamen;
+    private javax.swing.JFrame Menu;
     private javax.swing.JFrame Registro;
     private javax.swing.JComboBox<String> cb_tipoestudiante;
     private javax.swing.JButton jButton1;
@@ -446,6 +531,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -457,8 +543,18 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_CrearExamenFondo;
     private javax.swing.JLabel jLabel_RegistroFondo;
     private javax.swing.JLabel jLabel_fondo;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JSpinner sp_cepuntaje;
     private javax.swing.JSpinner sp_edad;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextField tf_carrera;
     private javax.swing.JTextField tf_ceclase;
     private javax.swing.JTextField tf_cetema;
@@ -471,6 +567,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombreusuarioregistro;
     private javax.swing.JTextField tf_numerocuenta;
     // End of variables declaration//GEN-END:variables
-    private ArrayList <Alumno> alumnos = new ArrayList();
+    public static ArrayList <Alumno> alumnos = new ArrayList();
+    
     private int flag;
 }
