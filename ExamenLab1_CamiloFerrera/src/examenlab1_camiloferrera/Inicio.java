@@ -75,10 +75,21 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaexamenesp = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        cb_tutores = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -231,18 +242,86 @@ public class Inicio extends javax.swing.JFrame {
             tabla.getColumnModel().getColumn(8).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 810, -1));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 510));
 
         jTabbedPane1.addTab("ListarDatos", jPanel2);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablaexamenesp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Clase", "IQ Requerido", "Tema", "Puntaje"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tablaexamenesp);
+        if (tablaexamenesp.getColumnModel().getColumnCount() > 0) {
+            tablaexamenesp.getColumnModel().getColumn(0).setResizable(false);
+            tablaexamenesp.getColumnModel().getColumn(1).setResizable(false);
+            tablaexamenesp.getColumnModel().getColumn(2).setResizable(false);
+            tablaexamenesp.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 510));
+
         jTabbedPane1.addTab("ExamenesPendientes", jPanel3);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jTabbedPane1.addTab("ExamenesResueltos", jPanel4);
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel18.setText("Tutor:");
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel19.setText("Hora:");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel20.setText("Aula:");
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel21.setText("Fecha:");
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel22.setText("Tema:");
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+        jPanel5.add(cb_tutores, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 66, 190, 40));
+
         jTabbedPane1.addTab("ReservarTutoria", jPanel5);
         jTabbedPane1.addTab("HacerExamen", jPanel6);
         jTabbedPane1.addTab("DarTutoria", jPanel7);
+
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel23.setText("¿Seguro que quiere Salir?");
+        jPanel8.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 470, -1));
+
+        jButton6.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jButton6.setText("SI");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jPanel8.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 270, 120));
+
+        jTabbedPane1.addTab("Salir", jPanel8);
 
         Menu.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 540));
         Menu.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 0, 810, 540));
@@ -450,6 +529,15 @@ public class Inicio extends javax.swing.JFrame {
                 }
                 
                 if (valido == true) {
+                    tf_nombreusuario.setText("");
+                    tf_contraseña.setText("");
+                    DefaultComboBoxModel cb = (DefaultComboBoxModel) cb_tutores.getModel();
+                    for (int i = 0; i < alumnos.size(); i++) {
+                        if (alumnos.get(i) instanceof Tutor) {
+                            cb.addElement(alumnos.get(i));
+                        }
+                    }
+                    cb_tutores.setModel(cb);
                     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                     for (int i = 0; i < alumnos.size(); i++) {
                         if (alumnos.get(i) instanceof EstudianteNormal) {
@@ -459,12 +547,25 @@ public class Inicio extends javax.swing.JFrame {
                         }
                     }
                     tabla.setModel(modelo);
-                    if (alumnos.get(this.flag) instanceof EstudianteNormal) {                    
-                        Menu.pack();
-                        Menu.setLocationRelativeTo(null);
-                        Menu.setVisible(true);
+                    
+                    Menu.pack();
+                    Menu.setLocationRelativeTo(null);
+                    Menu.setVisible(true);
+                    this.setVisible(false);
+                    if (alumnos.get(this.flag) instanceof EstudianteNormal) {
+                        modelo = (DefaultTableModel)tablaexamenesp.getModel();
+                        for (int i = 0; i < ((EstudianteNormal)alumnos.get(flag)).getExamenes().size(); i++) {
+                            Object[] row = {((EstudianteNormal) alumnos.get(flag)).getExamenes().get(i).getClase(),((EstudianteNormal) alumnos.get(flag)).getExamenes().get(i).getIqrequerido(),
+                            ((EstudianteNormal) alumnos.get(flag)).getExamenes().get(i).getTema(), ((EstudianteNormal) alumnos.get(flag)).getExamenes().get(i).getPuntaje()};
+                            modelo.addRow(row);
+                        }
+                        tablaexamenesp.setModel(modelo);                       
                         jTabbedPane1.setEnabledAt(6, false);
-                        this.setVisible(false);
+                    } else {
+                        jTabbedPane1.setEnabledAt(2, false);
+                        jTabbedPane1.setEnabledAt(3, false);
+                        jTabbedPane1.setEnabledAt(4, false);
+                        jTabbedPane1.setEnabledAt(5, false);
                     }
                 } else {
                     JOptionPane.showMessageDialog(this,"Nombre de usuario y/o contraseña incorrecto/s");
@@ -476,6 +577,12 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Hubo un error contacte al administrador.");
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        Menu.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -506,6 +613,7 @@ public class Inicio extends javax.swing.JFrame {
 
         /* Create and display the form */
         alumnos.add(new EstudianteNormal (99,"Camilo","Sistemas","TGU","11841136","camiloeferrera","java123",19));
+        alumnos.add(new Tutor (99,"Diego","Sistemas","SPS","11156745","diegom","java123",22));
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Inicio().setVisible(true);
@@ -518,11 +626,13 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JFrame Menu;
     private javax.swing.JFrame Registro;
     private javax.swing.JComboBox<String> cb_tipoestudiante;
+    private javax.swing.JComboBox<String> cb_tutores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -532,7 +642,13 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -550,11 +666,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JSpinner sp_cepuntaje;
     private javax.swing.JSpinner sp_edad;
     private javax.swing.JTable tabla;
+    private javax.swing.JTable tablaexamenesp;
     private javax.swing.JTextField tf_carrera;
     private javax.swing.JTextField tf_ceclase;
     private javax.swing.JTextField tf_cetema;
