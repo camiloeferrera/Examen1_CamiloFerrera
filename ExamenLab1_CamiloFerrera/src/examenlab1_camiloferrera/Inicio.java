@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.Random;
 
 public class Inicio extends javax.swing.JFrame {
 
@@ -16,15 +17,7 @@ public class Inicio extends javax.swing.JFrame {
         modelo.addElement("Tutor");
         cb_tipoestudiante.setModel(modelo);
         
-        DefaultTableModel modelo2 = (DefaultTableModel) tabla.getModel();
-        for (int i = 0; i < alumnos.size(); i++) {
-            if (alumnos.get(i) instanceof EstudianteNormal) {
-                Object[] row = {alumnos.get(i),alumnos.get(i).getEdad(),alumnos.get(i).getCarrera(),alumnos.get(i).getLugarnacimiento(),
-                alumnos.get(i).getNumerocuenta(),alumnos.get(i).getUsuario(),alumnos.get(i).getContraseña(),((EstudianteNormal)alumnos.get(i)).getConocimientoacumulado(),((EstudianteNormal)alumnos.get(i)).getNiveldeaprendizaje()};
-                modelo2.addRow(row);
-            }
-        }
-        cb_tipoestudiante.setModel(modelo);
+        
         
         DefaultComboBoxModel cb = (DefaultComboBoxModel) cb_tutores.getModel();
         for (int i = 0; i < alumnos.size(); i++) {
@@ -77,11 +70,9 @@ public class Inicio extends javax.swing.JFrame {
         jLabel_CrearExamenFondo = new javax.swing.JLabel();
         Menu = new javax.swing.JFrame();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jButton9 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -92,8 +83,11 @@ public class Inicio extends javax.swing.JFrame {
         tf_modificartutorcarrera = new javax.swing.JTextField();
         tf_modificartutorlugar = new javax.swing.JTextField();
         tf_modificartutorusuario = new javax.swing.JTextField();
-        tf_modificartutorcontraseña = new javax.swing.JPasswordField();
         sp_modificartutoredad = new javax.swing.JSpinner();
+        jLabel33 = new javax.swing.JLabel();
+        cb_alumnos = new javax.swing.JComboBox<>();
+        jLabel26 = new javax.swing.JLabel();
+        tf_modificartutorcontraseña = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
@@ -121,9 +115,14 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tablahacerexamen = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
+        jLabel32 = new javax.swing.JLabel();
+        tf_conocimiento = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabladartutorias = new javax.swing.JTable();
+        jButton10 = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
@@ -246,9 +245,6 @@ public class Inicio extends javax.swing.JFrame {
         Menu.setResizable(false);
         Menu.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jTabbedPane1.addTab("ModificarDatos", jPanel1);
-
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -258,15 +254,11 @@ public class Inicio extends javax.swing.JFrame {
                 jButton9MouseClicked(evt);
             }
         });
-        jPanel9.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 150, 70));
+        jPanel9.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, 150, 70));
 
         jLabel25.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel25.setText("Contraseña:");
-        jPanel9.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, -1, -1));
-
-        jLabel26.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel26.setText("Nombre:");
-        jPanel9.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
+        jPanel9.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 110, -1));
 
         jLabel27.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel27.setText("Edad:");
@@ -282,20 +274,36 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel30.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel30.setText("Numero de Cuenta:");
-        jPanel9.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
+        jPanel9.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, 30));
 
         jLabel31.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel31.setText("Usuario:");
-        jPanel9.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
-        jPanel9.add(tf_modificartutornumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 170, 30));
-        jPanel9.add(tf_modificartutornombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 170, 30));
+        jPanel9.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 80, 30));
+        jPanel9.add(tf_modificartutornumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 170, 30));
+        jPanel9.add(tf_modificartutornombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 170, 30));
         jPanel9.add(tf_modificartutorcarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 170, 30));
         jPanel9.add(tf_modificartutorlugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 170, 30));
         jPanel9.add(tf_modificartutorusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 170, 30));
-        jPanel9.add(tf_modificartutorcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 170, 30));
 
         sp_modificartutoredad.setModel(new javax.swing.SpinnerNumberModel(18, 18, 99, 1));
         jPanel9.add(sp_modificartutoredad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 60, 40));
+
+        jLabel33.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel33.setText("Nombre:");
+        jPanel9.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 104, -1, 40));
+
+        cb_alumnos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cb_alumnos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_alumnosItemStateChanged(evt);
+            }
+        });
+        jPanel9.add(cb_alumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 440, 60, 40));
+
+        jLabel26.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel26.setText("SELECCIONAR POSICION: ");
+        jPanel9.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
+        jPanel9.add(tf_modificartutorcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 170, 30));
 
         jTabbedPane1.addTab("ModificarMisDatos", jPanel9);
 
@@ -330,7 +338,7 @@ public class Inicio extends javax.swing.JFrame {
             tabla.getColumnModel().getColumn(8).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 510));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 510));
 
         jTabbedPane1.addTab("ListarDatos", jPanel2);
 
@@ -371,27 +379,34 @@ public class Inicio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Clase", "IQ Requerido", "Tema", "Puntaje", "Resultado"
+                "Nombre", "Clase", "IQ Requerido", "Tema", "Puntaje", "Resultado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane5.setViewportView(tablaexamenesr);
         if (tablaexamenesr.getColumnModel().getColumnCount() > 0) {
-            tablaexamenesr.getColumnModel().getColumn(0).setResizable(false);
             tablaexamenesr.getColumnModel().getColumn(1).setResizable(false);
             tablaexamenesr.getColumnModel().getColumn(2).setResizable(false);
             tablaexamenesr.getColumnModel().getColumn(3).setResizable(false);
             tablaexamenesr.getColumnModel().getColumn(4).setResizable(false);
+            tablaexamenesr.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 520));
+        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 520));
 
         jTabbedPane1.addTab("ExamenesResueltos", jPanel4);
 
@@ -476,7 +491,7 @@ public class Inicio extends javax.swing.JFrame {
             tablahacerexamen.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 690, 340));
+        jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 690, 340));
 
         jButton8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton8.setText("Hacer Examen/es");
@@ -485,7 +500,12 @@ public class Inicio extends javax.swing.JFrame {
                 jButton8MouseClicked(evt);
             }
         });
-        jPanel6.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 170, 60));
+        jPanel6.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 170, 60));
+
+        jLabel32.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel32.setText("Conocimiento Acumulado:");
+        jPanel6.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, -1, -1));
+        jPanel6.add(tf_conocimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 80, -1));
 
         jTabbedPane1.addTab("HacerExamen", jPanel6);
 
@@ -516,7 +536,21 @@ public class Inicio extends javax.swing.JFrame {
             tabladartutorias.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 5, 530, 250));
+        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 5, 640, 350));
+
+        jButton10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton10.setText("Dar Tutoria");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+        jPanel7.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 150, 50));
+
+        jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel34.setText("TUS GANANCIAS:");
+        jPanel7.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, -1, -1));
+        jPanel7.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, -1, -1));
 
         jTabbedPane1.addTab("DarTutoria", jPanel7);
 
@@ -524,7 +558,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel23.setText("¿Seguro que quiere Salir?");
-        jPanel8.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 470, -1));
+        jPanel8.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 470, -1));
 
         jButton6.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton6.setText("SI");
@@ -533,11 +567,11 @@ public class Inicio extends javax.swing.JFrame {
                 jButton6MouseClicked(evt);
             }
         });
-        jPanel8.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 270, 120));
+        jPanel8.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 270, 120));
 
         jTabbedPane1.addTab("Salir", jPanel8);
 
-        Menu.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 540));
+        Menu.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 540));
         Menu.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 0, 820, 540));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -747,23 +781,53 @@ public class Inicio extends javax.swing.JFrame {
                 }
                 
                 if (valido == true) {
+                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                    for (int i = 0; i < alumnos.size(); i++) {
+                        if (alumnos.get(i) instanceof EstudianteNormal) {
+                            Object[] row = {alumnos.get(i),alumnos.get(i).getEdad(),alumnos.get(i).getCarrera(),alumnos.get(i).getLugarnacimiento(),
+                            alumnos.get(i).getNumerocuenta(),alumnos.get(i).getUsuario(),alumnos.get(i).getContraseña(),((EstudianteNormal)alumnos.get(i)).getConocimientoacumulado(),((EstudianteNormal)alumnos.get(i)).getNiveldeaprendizaje()};
+                            modelo.addRow(row);
+                        }
+                    }
+                    tabla.setModel(modelo);
+                    
+                    DefaultComboBoxModel cb = (DefaultComboBoxModel) cb_alumnos.getModel();
+                    for (int i = 0; i < alumnos.size(); i++) {
+                        cb.addElement((i+1));
+                    }
+                    cb_alumnos.setModel(cb);
+                    
                     Menu.pack();
                     Menu.setLocationRelativeTo(null);
                     Menu.setVisible(true);
                     this.setVisible(false);
-                    if (alumnos.get(this.flag) instanceof EstudianteNormal) {
-                        DefaultTableModel modelo = (DefaultTableModel) tablaexamenesp.getModel();
+                    tf_modificartutornombre.setText("");
+                    sp_modificartutoredad.setValue(18);
+                    tf_modificartutorcarrera.setText("");
+                    tf_modificartutorlugar.setText("");
+                    tf_modificartutornumero.setText("");
+                    tf_modificartutorusuario.setText("");
+                    tf_modificartutorcontraseña.setText("");
+                        
+                    if (alumnos.get(this.flag) instanceof EstudianteNormal) {                       
+                        modelo = (DefaultTableModel) tablaexamenesp.getModel();
                         for (int i = 0; i < ((EstudianteNormal)alumnos.get(flag)).getExamenes().size(); i++) {
                             Object[] row = {((EstudianteNormal)alumnos.get(flag)).getExamenes().get(i),((EstudianteNormal)alumnos.get(flag)).getExamenes().get(i).getIqrequerido(),
                             ((EstudianteNormal)alumnos.get(flag)).getExamenes().get(i).getTema(),((EstudianteNormal)alumnos.get(flag)).getExamenes().get(i).getPuntaje()};
                             modelo.addRow(row);
                         }
+                        
+                        
                         tablaexamenesp.setModel(modelo);
                         tablahacerexamen.setModel(modelo);
-                        jTabbedPane1.setEnabledAt(7, false);
-                        jTabbedPane1.setEnabledAt(1, false);
+                        jTabbedPane1.setSelectedIndex(0);
+                        jTabbedPane1.setEnabledAt(6, false);
+                        
+                        String a = String.valueOf(((EstudianteNormal) alumnos.get(flag)).getConocimientoacumulado());
+                        tf_conocimiento.setText(a);
+                        tf_conocimiento.setEditable(false);
                     } else {
-                        DefaultTableModel modelo = (DefaultTableModel) tabladartutorias.getModel();
+                        modelo = (DefaultTableModel) tabladartutorias.getModel();
                         for (int i = 0; i < ((Tutor)alumnos.get(flag)).getTutorias().size(); i++) {
                             Object[] row  = {((Tutor)alumnos.get(flag)).getTutorias().get(i),((Tutor)alumnos.get(flag)).getTutorias().get(i).getTema(),
                             ((Tutor)alumnos.get(flag)).getTutorias().get(i).getFecha(), ((Tutor)alumnos.get(flag)).getTutorias().get(i).getHora(),
@@ -771,20 +835,15 @@ public class Inicio extends javax.swing.JFrame {
                             modelo.addRow(row);
                         }
                         tabladartutorias.setModel(modelo);
-                        tf_modificartutornombre.setText(alumnos.get(flag).getNombre());
-                        sp_modificartutoredad.setValue(alumnos.get(flag).getEdad());
-                        tf_modificartutorcarrera.setText(alumnos.get(flag).getCarrera());
-                        tf_modificartutorlugar.setText(alumnos.get(flag).getLugarnacimiento());
-                        tf_modificartutornumero.setText(alumnos.get(flag).getNumerocuenta());
-                        tf_modificartutorusuario.setText(alumnos.get(flag).getUsuario());
                         
-                        
-                        jTabbedPane1.setEnabledAt(0, false);
+                        jTabbedPane1.setSelectedIndex(0);
                         jTabbedPane1.setEnabledAt(2, false);
                         jTabbedPane1.setEnabledAt(3, false);
                         jTabbedPane1.setEnabledAt(4, false);
                         jTabbedPane1.setEnabledAt(5, false);
-                        jTabbedPane1.setEnabledAt(6, false);
+                        String a =String.valueOf(((Tutor)alumnos.get(flag)).getGanancias());
+                        jTextField1.setText(a);
+                        jTextField1.setEditable(false);
                     }
                 } else {
                     JOptionPane.showMessageDialog(this,"Nombre de usuario y/o contraseña incorrecto/s");
@@ -806,18 +865,14 @@ public class Inicio extends javax.swing.JFrame {
         sp_hora.setValue(1);
         dc_fecha.setDate(new Date());
         cb_tutores.setSelectedIndex(0);
+        cb_alumnos.setSelectedIndex(0);
 
-        jTabbedPane1.setEnabledAt(0, true);
-        jTabbedPane1.setEnabledAt(1, true);
-        jTabbedPane1.setEnabledAt(6, true);
         jTabbedPane1.setEnabledAt(2, true);
         jTabbedPane1.setEnabledAt(3, true);
         jTabbedPane1.setEnabledAt(4, true);
         jTabbedPane1.setEnabledAt(5, true);
-        
-        tf_modificartutorcontraseña.setText("");
-        
-        
+        jTabbedPane1.setEnabledAt(6, true);
+        jTabbedPane1.setEnabledAt(7, true);
 
         DefaultTableModel modelo = (DefaultTableModel)tablaexamenesp.getModel();
         int x = modelo.getRowCount();
@@ -840,8 +895,50 @@ public class Inicio extends javax.swing.JFrame {
         }
         tabladartutorias.setModel(modelo);
 
+        modelo =(DefaultTableModel) tabla.getModel();
+        x = modelo.getRowCount();
+        for (int i = 0; i < x; i++) {
+            modelo.removeRow(0);
+        }
+        tabla.setModel(modelo);
+
         this.setVisible(true);
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        if (tabladartutorias.getSelectedRowCount() == 1) {
+            ((Tutor)alumnos.get(flag)).getTutorias().remove(tabladartutorias.getSelectedRow());
+            DarTutoria((Tutoria)tabladartutorias.getValueAt(tabladartutorias.getSelectedRow(), 0));
+            ((Tutor)alumnos.get(flag)).setGanancias(270);
+            JOptionPane.showMessageDialog(Menu, "Tutoria Dada Exitosamente! Ganaste 270 Lps");
+
+            DefaultTableModel modelo = (DefaultTableModel) tabladartutorias.getModel();
+            modelo.removeRow(tabladartutorias.getSelectedRow());
+            tabladartutorias.setModel(modelo);
+
+            modelo =(DefaultTableModel) tabla.getModel();
+            int x = modelo.getRowCount();
+            for (int i = 0; i < x; i++) {
+                modelo.removeRow(0);
+            }
+            tabla.setModel(modelo);
+
+            modelo = (DefaultTableModel) tabla.getModel();
+            for (int i = 0; i < alumnos.size(); i++) {
+                if (alumnos.get(i) instanceof EstudianteNormal) {
+                    Object[] row = {alumnos.get(i),alumnos.get(i).getEdad(),alumnos.get(i).getCarrera(),alumnos.get(i).getLugarnacimiento(),
+                        alumnos.get(i).getNumerocuenta(),alumnos.get(i).getUsuario(),alumnos.get(i).getContraseña(),((EstudianteNormal)alumnos.get(i)).getConocimientoacumulado(),((EstudianteNormal)alumnos.get(i)).getNiveldeaprendizaje()};
+                    modelo.addRow(row);
+                }
+            }
+            tabla.setModel(modelo);
+
+            String a =String.valueOf(((Tutor)alumnos.get(flag)).getGanancias());
+            jTextField1.setText(a);
+        }
+
+    }//GEN-LAST:event_jButton10MouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
@@ -852,12 +949,12 @@ public class Inicio extends javax.swing.JFrame {
                 DefaultTableModel modelo = (DefaultTableModel) tablaexamenesr.getModel();
                 if (aprobar == true) {
                     JOptionPane.showMessageDialog(Menu, "Ha aprobado el examen, FELICIDADES!");
-                    Object[] row = {tablahacerexamen.getValueAt(rows[i], 0),tablahacerexamen.getValueAt(rows[i], 1),tablahacerexamen.getValueAt(rows[i], 2),tablahacerexamen.getValueAt(rows[i], 3),"APB"};
+                    Object[] row = {alumnos.get(flag).getNombre(),tablahacerexamen.getValueAt(rows[i], 0),tablahacerexamen.getValueAt(rows[i], 1),tablahacerexamen.getValueAt(rows[i], 2),tablahacerexamen.getValueAt(rows[i], 3),"APB"};
                     modelo.addRow(row);
                     tablaexamenesr.setModel(modelo);
                 } else {
                     JOptionPane.showMessageDialog(Menu, "Ha reprobado el examen, vaya a tutorias.");
-                    Object[] row = {tablahacerexamen.getValueAt(rows[i], 0),tablahacerexamen.getValueAt(rows[i], 1),tablahacerexamen.getValueAt(rows[i], 2),tablahacerexamen.getValueAt(rows[i], 3),"REP"};
+                    Object[] row = {alumnos.get(flag).getNombre(),tablahacerexamen.getValueAt(rows[i], 0),tablahacerexamen.getValueAt(rows[i], 1),tablahacerexamen.getValueAt(rows[i], 2),tablahacerexamen.getValueAt(rows[i], 3),"REP"};
                     modelo.addRow(row);
                     tablaexamenesr.setModel(modelo);
                 }
@@ -870,6 +967,8 @@ public class Inicio extends javax.swing.JFrame {
                     rows[j]--;
                 }
             }
+        } else {
+            JOptionPane.showMessageDialog(Menu, "No ha seleccionado ningun examen.");
         }
     }//GEN-LAST:event_jButton8MouseClicked
 
@@ -910,6 +1009,7 @@ public class Inicio extends javax.swing.JFrame {
                             }
                         }
                     }
+                    x.getAlumnos().add(alumnos.get(flag));
                     tutorias.add(x);
                 }
 
@@ -924,30 +1024,71 @@ public class Inicio extends javax.swing.JFrame {
             dc_fecha.setDate(new Date());
             cb_tutores.setSelectedIndex(0);
         }
-
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         // TODO add your handling code here:
         try {
             if (tf_modificartutornombre.getText().isEmpty() == true || tf_modificartutorcarrera.getText().isEmpty() == true || tf_modificartutorlugar.getText().isEmpty() == true ||
-                    tf_modificartutornumero.getText().isEmpty() == true || tf_modificartutorusuario.getText().isEmpty() == true || tf_modificartutorcontraseña.getText().isEmpty() == true) {
+                tf_modificartutornumero.getText().isEmpty() == true || tf_modificartutorusuario.getText().isEmpty() == true || tf_modificartutorcontraseña.getText().isEmpty() == true) {
                 JOptionPane.showMessageDialog(Menu, "Hay campos vacios");
             } else {
-                alumnos.get(flag).setNombre(tf_modificartutornombre.getText());
-                alumnos.get(flag).setCarrera(tf_modificartutorcarrera.getText());
-                alumnos.get(flag).setLugarnacimiento(tf_modificartutorlugar.getText());
-                alumnos.get(flag).setUsuario(tf_modificartutorusuario.getText());
-                alumnos.get(flag).setNumerocuenta(tf_modificartutornumero.getText());
-                alumnos.get(flag).setContraseña(tf_modificartutorcontraseña.getText());
-                alumnos.get(flag).setEdad((int)sp_modificartutoredad.getValue());
-                JOptionPane.showMessageDialog(Menu, "Tus Datos Han Sido Modificados Exitosamente!");
+                
+                
+                alumnos.get((int)cb_alumnos.getSelectedItem()-1).setNombre(tf_modificartutornombre.getText());
+                alumnos.get((int)cb_alumnos.getSelectedItem()-1).setCarrera(tf_modificartutorcarrera.getText());
+                alumnos.get((int)cb_alumnos.getSelectedItem()-1).setLugarnacimiento(tf_modificartutorlugar.getText());
+                alumnos.get((int)cb_alumnos.getSelectedItem()-1).setUsuario(tf_modificartutorusuario.getText());
+                alumnos.get((int)cb_alumnos.getSelectedItem()-1).setNumerocuenta(tf_modificartutornumero.getText());
+                alumnos.get((int)cb_alumnos.getSelectedItem()-1).setContraseña(tf_modificartutorcontraseña.getText());
+                alumnos.get((int)cb_alumnos.getSelectedItem()-1).setEdad((int)sp_modificartutoredad.getValue());
+                JOptionPane.showMessageDialog(Menu, "Los Datos Han Sido Modificados Exitosamente!");
+                
+                tf_modificartutornombre.setText("");
+                sp_modificartutoredad.setValue(18);
+                tf_modificartutorcarrera.setText("");
+                tf_modificartutorlugar.setText("");
+                tf_modificartutornumero.setText("");
+                tf_modificartutorusuario.setText("");
+                tf_modificartutorcontraseña.setText("");
+                
+               
+                DefaultTableModel modelo =(DefaultTableModel) tabla.getModel();
+                int x = modelo.getRowCount();
+                for (int i = 0; i < x; i++) {
+                    modelo.removeRow(0);
+                }
+                tabla.setModel(modelo);
+                
+                for (int i = 0; i < alumnos.size(); i++) {
+                    if (alumnos.get(i) instanceof EstudianteNormal) {
+                        Object[] row = {alumnos.get(i),alumnos.get(i).getEdad(),alumnos.get(i).getCarrera(),alumnos.get(i).getLugarnacimiento(),
+                        alumnos.get(i).getNumerocuenta(),alumnos.get(i).getUsuario(),alumnos.get(i).getContraseña(),((EstudianteNormal)alumnos.get(i)).getConocimientoacumulado(),((EstudianteNormal)alumnos.get(i)).getNiveldeaprendizaje()};
+                        modelo.addRow(row);
+                    }
+                }
+                tabla.setModel(modelo);
             }
-                            
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(Menu, "Hubo un error contacte al administrador");
+            JOptionPane.showMessageDialog(Menu, "Hubo un error contacte al administrador.");
         }
     }//GEN-LAST:event_jButton9MouseClicked
+
+    private void cb_alumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_alumnosItemStateChanged
+        // TODO add your handling code here:
+        int x = (int)cb_alumnos.getSelectedItem();
+        x--;
+        
+        tf_modificartutornombre.setText(alumnos.get(x).getNombre());
+        sp_modificartutoredad.setValue(alumnos.get(x).getEdad());
+        tf_modificartutorcarrera.setText(alumnos.get(x).getCarrera());
+        tf_modificartutorlugar.setText(alumnos.get(x).getLugarnacimiento());
+        tf_modificartutornumero.setText(alumnos.get(x).getNumerocuenta());
+        tf_modificartutorusuario.setText(alumnos.get(x).getUsuario());
+        tf_modificartutorcontraseña.setText(alumnos.get(x).getContraseña());
+        
+    }//GEN-LAST:event_cb_alumnosItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -990,10 +1131,12 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JFrame CrearExamen;
     private javax.swing.JFrame Menu;
     private javax.swing.JFrame Registro;
+    private javax.swing.JComboBox<String> cb_alumnos;
     private javax.swing.JComboBox<String> cb_tipoestudiante;
     private javax.swing.JComboBox<String> cb_tutores;
     private com.toedter.calendar.JDateChooser dc_fecha;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1027,6 +1170,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1036,7 +1182,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_CrearExamenFondo;
     private javax.swing.JLabel jLabel_RegistroFondo;
     private javax.swing.JLabel jLabel_fondo;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1051,6 +1196,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JSpinner sp_aula;
     private javax.swing.JSpinner sp_cepuntaje;
     private javax.swing.JSpinner sp_edad;
@@ -1065,11 +1211,12 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField tf_ceclase;
     private javax.swing.JTextField tf_cetema;
     private javax.swing.JTextField tf_clase;
+    private javax.swing.JTextField tf_conocimiento;
     private javax.swing.JPasswordField tf_contraseña;
     private javax.swing.JPasswordField tf_contraseñaregistro;
     private javax.swing.JTextField tf_iqcrearexamen;
     private javax.swing.JTextField tf_modificartutorcarrera;
-    private javax.swing.JPasswordField tf_modificartutorcontraseña;
+    private javax.swing.JTextField tf_modificartutorcontraseña;
     private javax.swing.JTextField tf_modificartutorlugar;
     private javax.swing.JTextField tf_modificartutornombre;
     private javax.swing.JTextField tf_modificartutornumero;
@@ -1081,7 +1228,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField tf_numerocuenta;
     private javax.swing.JTextField tf_tema;
     // End of variables declaration//GEN-END:variables
+    public void DarTutoria (Tutoria x){
+        for (int i = 0; i < x.getAlumnos().size(); i++) {            
+            ((EstudianteNormal)x.getAlumnos().get(i)).setConocimientoacumulado(rand.nextInt(100));
+        }
+    }
+    
     public static  ArrayList <Alumno> alumnos = new ArrayList();
     public ArrayList <Tutoria> tutorias = new ArrayList();
     private int flag;
+    private Random rand = new Random();
 }

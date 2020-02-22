@@ -35,7 +35,7 @@ public class Tutor extends Alumno {
         this.clases = clases;
     }
     public void setGanancias(int ganancias) {
-        this.ganancias = ganancias;
+        this.ganancias += ganancias;
     }
     public void setNivelenseñanza(int nivelenseñanza) {
         this.nivelenseñanza = nivelenseñanza;
