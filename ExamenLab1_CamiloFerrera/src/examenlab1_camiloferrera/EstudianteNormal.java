@@ -42,8 +42,12 @@ public class EstudianteNormal extends Alumno {
     
 
     @Override
-    public void HacerExamen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean HacerExamen(Examen e) {
+        if (this.conocimientoacumulado > e.getIqrequerido()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

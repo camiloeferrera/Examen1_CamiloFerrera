@@ -66,7 +66,7 @@ public abstract class Alumno {
     }
     
     
-    public abstract void HacerExamen();
+    public abstract boolean HacerExamen(Examen e);
     public abstract void DarTutorias();
     
 }

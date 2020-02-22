@@ -50,12 +50,12 @@ public class Tutor extends Alumno {
     }
 
     @Override
-    public void HacerExamen() {
+    public void DarTutorias() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void DarTutorias() {
+    public boolean HacerExamen(Examen e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

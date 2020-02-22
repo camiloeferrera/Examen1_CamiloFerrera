@@ -7,6 +7,7 @@ package examenlab1_camiloferrera;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -76,8 +77,53 @@ public class Tutoria {
 
     @Override
     public String toString() {
-        return "Tutoria{" + "clase=" + clase + ", tema=" + tema + ", fecha=" + fecha + ", hora=" + hora + ", aula=" + aula + ", tutor=" + tutor + ", alumnos=" + alumnos + '}';
+        return this.clase;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.clase);
+        hash = 67 * hash + Objects.hashCode(this.tema);
+        hash = 67 * hash + Objects.hashCode(this.fecha);
+        hash = 67 * hash + this.hora;
+        hash = 67 * hash + this.aula;
+        hash = 67 * hash + Objects.hashCode(this.tutor);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tutoria other = (Tutoria) obj;
+        if (this.hora != other.hora) {
+            return false;
+        }
+        if (this.aula != other.aula) {
+            return false;
+        }
+        if (!Objects.equals(this.clase, other.clase)) {
+            return false;
+        }
+        if (!Objects.equals(this.tema, other.tema)) {
+            return false;
+        }
+        if (!Objects.equals(this.fecha, other.fecha)) {
+            return false;
+        }
+        if (!Objects.equals(this.tutor, other.tutor)) {
+            return false;
+        }
+        return true;
+    }
+
     
 }
