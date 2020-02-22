@@ -550,7 +550,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel34.setText("TUS GANANCIAS:");
         jPanel7.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, -1, -1));
-        jPanel7.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, -1, -1));
+        jPanel7.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 80, -1));
 
         jTabbedPane1.addTab("DarTutoria", jPanel7);
 
